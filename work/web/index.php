@@ -1,20 +1,18 @@
 <?php
 
-$today = date('Y-m-d H:i:s l');
+require('../app/functions.php');
+
+include('../app/_header.php');
 
 ?>
 
-<!DOCTYPE html>
-<html lang="ja">
+<form action="result.php" method="get">
+  <input type="text" name="message">
+  <input type="text" name="username">
+  <button>send</button>
+</form>
 
-<head>
-  <meta charset="utf-8">
-  <title>PHP Practice</title>
-</head>
 
-<body>
-  <p>Hello, PHP!</p>
-  <p>Today: <?php echo $today; ?></p>
-</body>
+<?php
 
-</html>
+include('../app/_footer.php');
