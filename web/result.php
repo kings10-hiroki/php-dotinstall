@@ -1,11 +1,11 @@
 <?php
 
-require('../app/functions.php');
+require('./app/functions.php');
 
 $message = filter_input(INPUT_GET, 'message');
 $username = filter_input(INPUT_GET, 'username');
 
-include('../app/_header.php');
+include('./app/_header.php');
 
 ?>
 
@@ -14,4 +14,4 @@ include('../app/_header.php');
 
 <?php
 
-include('../app/_footer.php');
+include('./app/_footer.php');

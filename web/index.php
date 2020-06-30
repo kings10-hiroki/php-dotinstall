@@ -1,8 +1,8 @@
 <?php
 
-require('../app/functions.php');
+require('./app/functions.php');
 
-include('../app/_header.php');
+include('./app/_header.php');
 
 ?>
 
@@ -15,4 +15,4 @@ include('../app/_header.php');
 
 <?php
 
-include('../app/_footer.php');
+include('./app/_footer.php');
