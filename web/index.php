@@ -2,14 +2,39 @@
 
 require('./app/functions.php');
 
+createToken();
+
+define('FILENAME', './app/message.txt');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  validateToken();
+  $message = trim(filter_input(INPUT_POST, 'message'));
+  $message = $message !== '' ? $message : '...';
+
+  $fp = fopen(FILENAME, 'a');
+  fwrite($fp, $message . "\n");
+  fclose($fp);
+
+  header('Location: http://localhost:8080/result.php');
+  exit;
+}
+
+$messages = file(FILENAME, FILE_IGNORE_NEW_LINES);
+
 include('./app/_header.php');
 
 ?>
 
-<form action="result.php" method="get">
+<ul>
+  <?php foreach ($messages as $message) : ?>
+    <li><?= h($message); ?></li>
+  <?php endforeach; ?>
+</ul>
+
+<form action="" method="post">
   <input type="text" name="message">
-  <input type="text" name="username">
-  <button>send</button>
+  <button>post</button>
+  <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
 </form>
 
 
